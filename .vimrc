@@ -55,6 +55,8 @@ Plugin 'mattn/emmet-vim'
 Plugin 'terryma/vim-multiple-cursors'
 
 "Testing
+Plugin 'vitalk/vim-simple-todo'
+Plugin 'pangloss/vim-javascript'
 Bundle 'slim-template/vim-slim.git'
 Plugin 'othree/html5.vim'
 Plugin 'TaskList.vim'
@@ -95,12 +97,17 @@ map <C-c> "*
 
 "Open new window
 nmap <silent> <C-m>  <Plug>GoldenViewSplit
+nmap <silent> <F9>   <Plug>GoldenViewSwitchMain
+nmap <silent> <S-F9> <Plug>GoldenViewSwitchToggle
 
 "Go to last selected file
 map <C-o> :bn<cr>
 " map <C-p> :bp<cr>
 "Allign selected lines by equal sign
-vmap <C-e> :Tabularize /^[^=]*\zs=/<cr>
+vmap <Leader>1 :Tabularize /^[^=]*\zs=/<cr>
+vmap <Leader>2 :Tabularize /^[^=>]*\zs=>/<cr>
+vmap <Leader>3 :Tabularize /^[^:]*\zs:/<cr>
+vmap <Leader>0 :Tabularize /
 
 set tags=./tags;
 " NerdTree options
@@ -214,28 +221,6 @@ inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplete#enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplete#enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
